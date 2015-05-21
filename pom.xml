@@ -228,7 +228,6 @@
             <artifactId>junit</artifactId>
             <version>4.11</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -257,25 +256,6 @@
                     <contextPath>/</contextPath>
                     <reload>automatic</reload>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.meituan.service.mobile</groupId>
-                <artifactId>autoconfig-maven-plugin</artifactId>
-                <version>0.0.1</version>
-                <executions>
-                    <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>generate</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <envBase>src/main/resources/META-INF/environments</envBase>
-                    <templateBase>src/main/resources/META-INF/templates</templateBase>
-                    <targetBase>src/main/resources</targetBase>
-                    <config>src/main/resources/META-INF/autoconfig.xml</config>
                 </configuration>
             </plugin>
         </plugins>

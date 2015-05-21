@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IUserDAO">
+    <insert id="insert">
+        INSERT INTO user(id,name,avatar,nickname,password,email,online,create_time,recent_login_time)
+        VALUES(#{id},#{name},#{avatar},#{nickname},#{password},#{email},#{online},#{createTime},#{recentLoginTime})
+    </insert>
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO user(id,name,avatar,nickname,password,email,online,create_time,recent_login_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.name},#{item.avatar},#{item.nickname},#{item.password},#{item.email},#{item.online},#{item.createTime},#{item.recentLoginTime})
+        </foreach>
+        ON DUPLICATE KEY UPDATE name=VALUES(name),avatar=VALUES(avatar),nickname=VALUES(nickname),password=VALUES(password),email=VALUES(email),online=VALUES(online),create_time=VALUES(create_time),recent_login_time=VALUES(recent_login_time)
+    </insert>
+    <update id="update">
+        UPDATE user
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="avatar != null">
+                avatar=#{avatar},
+            </if>
+            <if test="nickname != null">
+                nickname=#{nickname},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+            <if test="online != null">
+                online=#{online},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="recentLoginTime != null">
+                recent_login_time=#{recentLoginTime}
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.UserPO">
+        SELECT * FROM user
+        WHERE id=#{value}
+    </select>
+</mapper>

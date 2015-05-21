@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.service.impl;
 
-import com.sankuai.hackathon.lbs.bean.UserPO;
+import com.sankuai.hackathon.lbs.bean.PO.UserPO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IUserService;
 import org.springframework.stereotype.Service;

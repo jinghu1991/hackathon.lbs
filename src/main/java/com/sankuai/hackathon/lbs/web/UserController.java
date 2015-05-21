@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.web;
 
-import com.sankuai.hackathon.lbs.bean.UserPO;
+import com.sankuai.hackathon.lbs.bean.PO.UserPO;
 import com.sankuai.hackathon.lbs.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;

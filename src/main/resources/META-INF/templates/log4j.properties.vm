@@ -1,0 +1,40 @@
+ConversionPattern=[%-5p] [%d{HH:mm:ss}] %c - %m%n
+
+
+log4j.rootLogger=${rootLogger}
+
+
+#控制logger输出
+log4j.logger.com.sankuai.hackathon.lbs.framework.interceptor.EcomAuthInterceptor=ERROR
+log4j.logger.com.sankuai.meituan.filter.servlet=ERROR
+log4j.logger.com.sankuai.meituan.upm.tools=ERROR
+log4j.logger.com.meituan.mtrace=ERROR
+
+log4j.logger.org.springframework=ERROR
+log4j.logger.org.mybatis=ERROR
+log4j.logger.org.apache.ibatis=ERROR
+log4j.logger.org.apache=ERROR
+log4j.logger.httpclient=ERROR
+log4j.logger.com.mchange.v2=ERROR
+log4j.logger.freemarker=ERROR
+log4j.logger.org.quartz=ERROR
+log4j.logger.com.meituan.service.mobile.zkclient=ERROR
+log4j.logger.org.eclipse.jetty=ERROR
+
+# 标准输出
+log4j.appender.stdout=org.apache.log4j.ConsoleAppender
+log4j.appender.stdout.Threshold=DEBUG
+log4j.appender.stdout.Target=System.out
+log4j.appender.stdout.encoding=UTF-8
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=${ConversionPattern}
+
+# DEBUG及以上级别的输出
+log4j.appender.daily=org.apache.log4j.DailyRollingFileAppender
+log4j.appender.daily.datePattern='.'yyyy-MM-dd
+log4j.appender.daily.File=/opt/logs/hackathon.lbs.log
+log4j.appender.daily.Threshold=DEBUG
+log4j.appender.daily.append=true
+log4j.appender.daily.encoding=UTF-8
+log4j.appender.daily.layout=org.apache.log4j.PatternLayout
+log4j.appender.daily.layout.ConversionPattern=${ConversionPattern}

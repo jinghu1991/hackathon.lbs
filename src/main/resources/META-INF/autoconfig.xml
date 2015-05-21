@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autoconfig>
+    <template-resources>
+        <resource template="log4j.properties.vm" target="log4j.properties"/>
+        <resource template="config.properties.vm" target="config.properties"/>
+        <resource template="database.properties.vm" target="database.properties"/>
+    </template-resources>
+</autoconfig>

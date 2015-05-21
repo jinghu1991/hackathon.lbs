@@ -1,7 +1,7 @@
 package com.sankuai.hackathon.lbs.web;
 
-import com.sankuai.hackathon.lbs.bean.ApiResult;
-import com.sankuai.hackathon.lbs.bean.UserPO;
+import com.sankuai.hackathon.lbs.bean.AjaxResult;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -22,14 +22,14 @@ public class UserController {
     IUserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public @ResponseBody ApiResult getUser(@PathVariable Integer id) {
-        ApiResult result = new ApiResult();
+    public @ResponseBody AjaxResult getUser(@PathVariable Integer id) {
+        AjaxResult result = new AjaxResult();
         try {
             UserPO userPO = userService.getUser(id);
-            result.setSuccess(true);
+            result.setStatus(0);
             result.setData(userPO);
         } catch (Exception ex) {
-            result.setSuccess(false);
+            result.setStatus(-1);
             result.setMsg(ex.getMessage());
         }
         return result;
@@ -37,14 +37,14 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody ApiResult createUser(UserPO userPO) {
-        ApiResult result = new ApiResult();
+    public @ResponseBody AjaxResult createUser(UserPO userPO) {
+        AjaxResult result = new AjaxResult();
         try {
             userService.saveUser(userPO);
-            result.setSuccess(true);
+            result.setStatus(0);
             result.setData(userPO);
         } catch (Exception ex) {
-            result.setSuccess(false);
+            result.setStatus(-1);
             result.setMsg(ex.getMessage());
         }
         return result;

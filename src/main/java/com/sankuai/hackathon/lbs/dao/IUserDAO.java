@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUserDAO {
 
-    void insert(UserPO entity);
+    int insert(UserPO entity);
 
     void update(UserPO entity);
 

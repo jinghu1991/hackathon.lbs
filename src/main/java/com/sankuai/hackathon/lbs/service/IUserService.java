@@ -10,4 +10,6 @@ import com.sankuai.hackathon.lbs.bean.UserPO;
 public interface IUserService {
 
     UserPO getUser(Integer userId);
+
+    void saveUser(UserPO userPO);
 }

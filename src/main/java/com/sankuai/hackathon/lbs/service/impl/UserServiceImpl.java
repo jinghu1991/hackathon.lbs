@@ -7,6 +7,7 @@ import com.sankuai.hackathon.lbs.util.DateTime;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.security.InvalidParameterException;
 
 /**
  * Description: UserServiceImpl
@@ -20,15 +21,31 @@ public class UserServiceImpl implements IUserService{
     IUserDAO userDAO;
 
     @Override
-    public UserPO getUser(Integer userId) {
-        return userDAO.getById(userId);
-    }
-
-    @Override
     public void saveUser(UserPO userPO) {
         userPO.setCreateTime(DateTime.now().toSqlTimestamp());
         userPO.setRecentLoginTime(DateTime.now().toSqlTimestamp());
         userPO.setOnline(1);
         userDAO.insert(userPO);
+    }
+
+    @Override
+    public UserPO getUser(UserPO param) {
+        if(param.getId() != null) {
+            return userDAO.getById(param.getId());
+        }
+        if(param.getUsername() == null &&  param.getPassword() == null ) {
+            throw new InvalidParameterException("name and password can not be null!");
+        }
+        UserPO userPO = userDAO.getByName(param.getUsername());
+        if(userPO == null) {
+            throw new RuntimeException("user does not exist!");
+        } else if(param.getPassword().equals(userPO.getPassword())) {
+            userPO.setOnline(1);
+            userPO.setRecentLoginTime(DateTime.now().toSqlTimestamp());
+            userDAO.update(userPO);
+            return userPO;
+        } else {
+            throw new RuntimeException("password is wrong!");
+        }
     }
 }

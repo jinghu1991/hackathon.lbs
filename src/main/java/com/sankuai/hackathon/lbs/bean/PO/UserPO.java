@@ -9,7 +9,7 @@ import java.sql.Timestamp;
  */
 public class UserPO {
     private Integer id;
-    private String name;
+    private String username;
     private String avatar;
     private String nickname;
     private String password;
@@ -26,12 +26,12 @@ public class UserPO {
         this.id = id;
     }
 
-    public String getName(){
-        return this.name;
+    public String getUsername(){
+        return this.username;
     }
 
-    public void setName(String name){
-        this.name = name;
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public String getAvatar(){

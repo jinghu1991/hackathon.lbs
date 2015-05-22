@@ -16,4 +16,6 @@ public interface IUserDAO {
     void update(UserPO entity);
 
     UserPO getById(int id);
+
+    UserPO getByName(String name);
 }

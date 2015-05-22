@@ -1,33 +1,35 @@
 package com.sankuai.hackathon.lbs.web;
 
 import com.sankuai.hackathon.lbs.bean.AjaxResult;
-import com.sankuai.hackathon.lbs.bean.po.UserPO;
-import com.sankuai.hackathon.lbs.service.IUserService;
+import com.sankuai.hackathon.lbs.bean.po.PostPO;
+import com.sankuai.hackathon.lbs.service.IPostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
- * Description: UserController
+ * Description: MessageController
  * Author: jinghu1991
- * Create: 2015-05-21 20:15
+ * Create: 2015-05-22 09:43
  */
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/post")
+public class PostController {
 
     @Resource
-    IUserService userService;
+    IPostService postService;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody AjaxResult getUser(UserPO param) {
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(method = RequestMethod.POST)
+    public @ResponseBody AjaxResult createPost(PostPO postPO) {
         AjaxResult result = new AjaxResult();
         try {
-            UserPO userPO = userService.getUser(param);
+            postService.createPost(postPO);
             result.setStatus(0);
-            result.setData(userPO);
+            result.setData(postPO);
         } catch (Exception ex) {
             result.setStatus(-1);
             result.setMsg(ex.getMessage());
@@ -35,14 +37,13 @@ public class UserController {
         return result;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody AjaxResult createUser(UserPO userPO) {
+    @RequestMapping(method = RequestMethod.GET)
+    public @ResponseBody AjaxResult getGroupPost(Integer groupId) {
         AjaxResult result = new AjaxResult();
         try {
-            userService.saveUser(userPO);
+            List<PostPO> postPOList = postService.getPost(groupId);
             result.setStatus(0);
-            result.setData(userPO);
+            result.setData(postPOList);
         } catch (Exception ex) {
             result.setStatus(-1);
             result.setMsg(ex.getMessage());

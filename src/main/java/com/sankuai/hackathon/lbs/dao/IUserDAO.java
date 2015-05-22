@@ -3,6 +3,8 @@ package com.sankuai.hackathon.lbs.dao;
 import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * Description: IUserDAO
  * Author: jinghu1991
@@ -18,4 +20,6 @@ public interface IUserDAO {
     UserPO getById(int id);
 
     UserPO getByName(String name);
+
+    List<UserPO> getByGroup(Integer groupId);
 }

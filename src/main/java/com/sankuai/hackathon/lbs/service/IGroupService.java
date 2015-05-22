@@ -1,8 +1,10 @@
 package com.sankuai.hackathon.lbs.service;
 
-import com.sankuai.hackathon.lbs.bean.po.GroupPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
+import com.sankuai.hackathon.lbs.bean.vo.GroupVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Description: IGroupService
@@ -11,18 +13,14 @@ import java.util.List;
  */
 public interface IGroupService {
 
-    public List<GroupPO> getGroupPOByParam();
+    public List<GroupVO> getGroupPOByCond(Map<String, Object> cond);
 
-    public List<GroupPO> getGroupPOByUserId(Integer userId);
+    public List<GroupVO> getGroupPOByUserId(Integer userId);
 
     public void joinGroup(Integer groupId, Integer userId);
 
     public void leaveGroup(Integer groupId, Integer userId);
 
-    // group_user
-    // id
-    // group_id
-    // user_id
-    // join time
+    public List<UserPO> getUserByGroupId(Integer groupId);
 
 }

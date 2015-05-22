@@ -52,4 +52,13 @@ public class UserServiceImpl implements IUserService{
             throw new RuntimeException("password is wrong!");
         }
     }
+
+    @Override
+    public Integer checkExist(String userName) {
+        if(userDAO.getByName(userName) != null) {
+            throw new RuntimeException("user already exist!");
+        } else {
+            return 0;
+        }
+    }
 }

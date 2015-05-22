@@ -52,14 +52,18 @@
         <id column="id" property="id"/>
         <result column="description" property="content"/>
         <association property="user" resultMap="user"/>
-        <collection property="attends" ofType="com.sankuai.hackathon.lbs.bean.po.UserPO" resultMap="user"/>
     </resultMap>
     <select id="getByGroup" resultMap="activityVO">
         SELECT *
         FROM activity
         INNER JOIN tb_group on tb_group.id=activity.group_id
-        LEFT JOIN user_activity on user_activity.activity_id=activity.id
-        LEFT JOIN user on user.id=user_activity.user_id
+        INNER JOIN user on user.id=activity.user_id
         WHERE tb_group.id=${value}
+    </select>
+    <select id="getAttends" resultType="com.sankuai.hackathon.lbs.bean.po.UserPO">
+        SELECT user.*
+        FROM user
+        INNER JOIN user_activity on user_activity.user_id=user.id
+        WHERE user_activity.activity_id=${value}
     </select>
 </mapper>

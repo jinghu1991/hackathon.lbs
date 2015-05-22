@@ -52,7 +52,11 @@ public class ActivityServiceImpl implements IActivityService{
 
     @Override
     public List<ActivityVO> getActivityList(Integer groupId) {
-        return activityDAO.getByGroup(groupId);
+        List<ActivityVO> result = activityDAO.getByGroup(groupId);
+        for(ActivityVO activityVO : result) {
+            activityVO.setAttends(activityDAO.getAttends(activityVO.getId()));
+        }
+        return result;
     }
 
     @Override

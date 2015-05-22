@@ -1,6 +1,7 @@
 package com.sankuai.hackathon.lbs.dao;
 
 import com.sankuai.hackathon.lbs.bean.po.ActivityPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.bean.vo.ActivityVO;
 import org.springframework.stereotype.Repository;
 
@@ -21,4 +22,6 @@ public interface IActivityDAO {
     ActivityPO getById(int id);
 
     List<ActivityVO> getByGroup(Integer groupId);
+
+    List<UserPO> getAttends(Integer activityId);
 }

@@ -15,7 +15,7 @@ import java.util.Map;
  * Create: 2015-05-22
  */
 @Repository
-public interface IGroupDAOD {
+public interface IGroupDAO {
 
     public void insertGroup(GroupPO po);
 

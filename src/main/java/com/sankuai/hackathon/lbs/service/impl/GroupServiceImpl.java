@@ -64,17 +64,19 @@ public class GroupServiceImpl implements IGroupService{
     }
 
     @Override
-    public List<UserPO> getUserByGroupId(Integer groupId){
+    public List<MemberVO> getUserByGroupId(Integer groupId){
 
-        return this.userDao.getByGroup(groupId);
+        List<MemberVO> memberList = this.convertUserToMember(this.userDao.getByGroup(groupId));
+
+        return memberList;
     }
 
     private List<GroupVO> renderGroupVO(List<GroupVO> orgList){
         if(orgList != null && orgList.size() > 0){
             for(GroupVO vo: orgList){
                 Integer groupId = vo.getId();
-                List<UserPO> userList = this.getUserByGroupId(groupId);
-                vo.setMembers(this.convertUserToMember(userList));
+                List<MemberVO> memberList = this.getUserByGroupId(groupId);
+                vo.setMembers(memberList);
 
                 vo.getLocation().add(vo.getLongitude());
                 vo.getLocation().add(vo.getLatitude());

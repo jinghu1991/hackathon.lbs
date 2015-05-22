@@ -17,6 +17,8 @@ import java.util.Map;
 @Repository
 public interface IGroupDao {
 
+    public void insertGroup(GroupPO po);
+
     public List<GroupVO> getGroupPOByRange(Map<String, Object> cond);
 
     public List<GroupVO> getGroupByUserId(@Param("userId") Integer userId);

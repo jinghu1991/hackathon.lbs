@@ -15,6 +15,7 @@
         <![CDATA[ and latitude>#{swLat} ]]>
         <![CDATA[ and longitude<#{neLng} ]]>
         <![CDATA[ and longitude>#{swLng} ]]>
+        group by tb_group.id
     </select>
 
     <select id="getGroupByUserId" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
@@ -22,6 +23,7 @@
         inner join user_group on user_group.group_id = tb_group.id
         LEFT JOIN post on tb_group.id = post.group_id
         where user_group.user_id = #{userId}
+        group by tb_group.id
     </select>
 
     <insert id="insertMember" parameterType="com.sankuai.hackathon.lbs.bean.po.GroupUserPO">

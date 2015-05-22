@@ -29,13 +29,14 @@ public class GroupServiceImpl implements IGroupService{
     @Override
     public List<GroupVO> getGroupPOByCond(Map<String, Object> cond) {
 
-        return groupDao.getGroupPOByCond(cond);
+        return groupDao.getGroupPOByRange(cond);
     }
 
     @Override
     public List<GroupVO> getGroupPOByUserId(Integer userId) {
 
-        return null;
+        return this.groupDao.getGroupByUserId(userId);
+
     }
 
     @Override

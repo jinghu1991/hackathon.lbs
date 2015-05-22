@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IVoteDAO">
+    <insert id="insert">
+        INSERT INTO vote(post_id,user_id,type)
+        VALUES(#{postId},#{userId},#{type})
+    </insert>
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO vote(post_id,user_id,type)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.postId},#{item.userId},#{item.type})
+        </foreach>
+        ON DUPLICATE KEY UPDATE type=VALUES(type)
+    </insert>
+    <update id="update">
+        UPDATE vote
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="type != null">
+                type=#{type}
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="getVote" resultType="com.sankuai.hackathon.lbs.bean.po.VotePO">
+        SELECT * FROM vote
+        WHERE user_id=#{userId}
+        AND post_id=#{postId}
+    </select>
+</mapper>

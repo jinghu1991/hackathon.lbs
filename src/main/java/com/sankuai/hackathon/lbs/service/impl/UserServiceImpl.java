@@ -31,7 +31,11 @@ public class UserServiceImpl implements IUserService{
     @Override
     public UserPO getUser(UserPO param) {
         if(param.getId() != null) {
-            return userDAO.getById(param.getId());
+            UserPO userPO = userDAO.getById(param.getId());
+            if(userPO == null) {
+                throw new RuntimeException("user does not exit!");
+            }
+            return userPO;
         }
         if(param.getUsername() == null &&  param.getPassword() == null ) {
             throw new InvalidParameterException("name and password can not be null!");

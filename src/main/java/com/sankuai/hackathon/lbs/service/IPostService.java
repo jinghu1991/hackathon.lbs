@@ -1,6 +1,7 @@
 package com.sankuai.hackathon.lbs.service;
 
 import com.sankuai.hackathon.lbs.bean.po.PostPO;
+import com.sankuai.hackathon.lbs.bean.po.VotePO;
 
 import java.util.List;
 
@@ -15,5 +16,5 @@ public interface IPostService {
 
     List<PostPO> getPost(Integer groupId);
 
-    void votePost(Integer postId, Integer userId);
+    Integer votePost(VotePO votePO);
 }

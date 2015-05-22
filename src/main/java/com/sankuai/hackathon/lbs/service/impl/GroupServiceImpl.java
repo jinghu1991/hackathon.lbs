@@ -4,7 +4,7 @@ import com.sankuai.hackathon.lbs.bean.po.GroupUserPO;
 import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.bean.vo.GroupVO;
 import com.sankuai.hackathon.lbs.bean.vo.MemberVO;
-import com.sankuai.hackathon.lbs.dao.IGroupDAO;
+import com.sankuai.hackathon.lbs.dao.IGroupDAOD;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IGroupService;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class GroupServiceImpl implements IGroupService{
 
     @Resource
-    private IGroupDAO groupDao;
+    private IGroupDAOD groupDao;
 
     @Resource
     private IUserDAO userDao;

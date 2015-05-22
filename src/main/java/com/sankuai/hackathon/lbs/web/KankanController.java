@@ -26,9 +26,9 @@ public class KankanController {
 
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-    public AjaxResult getKankan(Integer groupId){
+    public AjaxResult getKankan(Integer groupid){
 
-        List<KankanPO> poList =  this.kankanService.getKankanByGroupId(groupId);
+        List<KankanPO> poList =  this.kankanService.getKankanByGroupId(groupid);
 
         AjaxResult result = AjaxResultFactory.getSuccessResult();
         result.setData(poList);

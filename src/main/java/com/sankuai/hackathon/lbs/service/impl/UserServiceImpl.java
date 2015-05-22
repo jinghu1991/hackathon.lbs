@@ -1,8 +1,9 @@
 package com.sankuai.hackathon.lbs.service.impl;
 
-import com.sankuai.hackathon.lbs.bean.PO.UserPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IUserService;
+import com.sankuai.hackathon.lbs.util.DateTime;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,5 +22,13 @@ public class UserServiceImpl implements IUserService{
     @Override
     public UserPO getUser(Integer userId) {
         return userDAO.getById(userId);
+    }
+
+    @Override
+    public void saveUser(UserPO userPO) {
+        userPO.setCreateTime(DateTime.now().toSqlTimestamp());
+        userPO.setRecentLoginTime(DateTime.now().toSqlTimestamp());
+        userPO.setOnline(1);
+        userDAO.insert(userPO);
     }
 }

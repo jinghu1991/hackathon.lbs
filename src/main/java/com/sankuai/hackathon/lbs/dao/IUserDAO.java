@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.dao;
 
-import com.sankuai.hackathon.lbs.bean.PO.UserPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IUserDAO {
 
-    void insert(UserPO entity);
+    int insert(UserPO entity);
 
     void update(UserPO entity);
 

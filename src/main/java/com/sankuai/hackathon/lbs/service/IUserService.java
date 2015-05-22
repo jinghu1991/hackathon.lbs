@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.service;
 
-import com.sankuai.hackathon.lbs.bean.PO.UserPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 
 /**
  * Description: IUserService
@@ -10,4 +10,6 @@ import com.sankuai.hackathon.lbs.bean.PO.UserPO;
 public interface IUserService {
 
     UserPO getUser(Integer userId);
+
+    void saveUser(UserPO userPO);
 }

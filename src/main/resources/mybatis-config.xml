@@ -21,6 +21,8 @@
         <setting name="defaultExecutorType" value="REUSE"/>
         <!-- 数据库超过25000秒仍未响应则超时 -->
         <setting name="defaultStatementTimeout" value="25000"/>
+        <!--自动影射下划线分割字段为驼峰命名-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
     </settings>
     <!-- 全局别名设置，在映射文件中只需写别名，而不必写出整个类路径 -->
     <typeAliases>

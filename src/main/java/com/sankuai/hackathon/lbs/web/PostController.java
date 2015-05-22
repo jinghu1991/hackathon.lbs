@@ -2,6 +2,7 @@ package com.sankuai.hackathon.lbs.web;
 
 import com.sankuai.hackathon.lbs.bean.AjaxResult;
 import com.sankuai.hackathon.lbs.bean.po.PostPO;
+import com.sankuai.hackathon.lbs.bean.po.VotePO;
 import com.sankuai.hackathon.lbs.service.IPostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -24,9 +25,13 @@ public class PostController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody AjaxResult createPost(PostPO postPO) {
+    public @ResponseBody AjaxResult createPost(Integer userid, Integer groupid, String content) {
         AjaxResult result = new AjaxResult();
         try {
+            PostPO postPO = new PostPO();
+            postPO.setUserId(userid);
+            postPO.setGroupId(groupid);
+            postPO.setContent(content);
             postService.createPost(postPO);
             result.setStatus(0);
             result.setData(postPO);
@@ -44,6 +49,25 @@ public class PostController {
             List<PostPO> postPOList = postService.getPost(groupId);
             result.setStatus(0);
             result.setData(postPOList);
+        } catch (Exception ex) {
+            result.setStatus(-1);
+            result.setMsg(ex.getMessage());
+        }
+        return result;
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(value = "/vote", method = RequestMethod.POST)
+    public @ResponseBody AjaxResult votePost(Integer postid, Integer userid, Integer type) {
+        AjaxResult result = new AjaxResult();
+        try {
+            VotePO param = new VotePO();
+            param.setUserId(userid);
+            param.setPostId(postid);
+            param.setType(type);
+            Integer voteCount = postService.votePost(param);
+            result.setStatus(0);
+            result.setData(voteCount);
         } catch (Exception ex) {
             result.setStatus(-1);
             result.setMsg(ex.getMessage());

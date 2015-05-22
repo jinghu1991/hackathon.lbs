@@ -1,5 +1,6 @@
 package com.sankuai.hackathon.lbs.dao;
 
+import com.sankuai.hackathon.lbs.bean.po.GroupPO;
 import com.sankuai.hackathon.lbs.bean.po.GroupUserPO;
 import com.sankuai.hackathon.lbs.bean.vo.GroupVO;
 import org.apache.ibatis.annotations.Param;
@@ -22,5 +23,5 @@ public interface IGroupDao {
 
     public void insertMember(GroupUserPO po);
 
-
+    public GroupPO getGroupById(Integer id);
 }

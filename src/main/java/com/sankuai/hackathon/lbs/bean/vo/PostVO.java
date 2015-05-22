@@ -15,6 +15,7 @@ public class PostVO {
     private GroupPO group;
     private String content;
     private Integer voteCount;
+    private Integer voted;
 
     public Integer getId() {
         return id;
@@ -54,5 +55,13 @@ public class PostVO {
 
     public void setVoteCount(Integer voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public Integer getVoted() {
+        return voted;
+    }
+
+    public void setVoted(Integer voted) {
+        this.voted = voted;
     }
 }

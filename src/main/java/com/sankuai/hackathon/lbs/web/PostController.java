@@ -44,10 +44,10 @@ public class PostController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody AjaxResult getGroupPost(Integer groupid) {
+    public @ResponseBody AjaxResult getGroupPost(Integer groupid, Integer userid) {
         AjaxResult result = new AjaxResult();
         try {
-            List<PostVO> postPOList = postService.getPost(groupid);
+            List<PostVO> postPOList = postService.getPost(groupid, userid);
             result.setStatus(0);
             result.setData(postPOList);
         } catch (Exception ex) {

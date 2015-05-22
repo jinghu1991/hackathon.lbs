@@ -4,6 +4,7 @@ import com.sankuai.hackathon.lbs.bean.po.PostPO;
 import com.sankuai.hackathon.lbs.bean.po.VotePO;
 import com.sankuai.hackathon.lbs.bean.vo.PostVO;
 
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -15,7 +16,7 @@ public interface IPostService {
 
     void createPost(PostPO postPO);
 
-    List<PostVO> getPost(Integer groupId);
+    List<PostVO> getPost(Integer groupId, Integer userId);
 
     Integer votePost(VotePO votePO);
 }

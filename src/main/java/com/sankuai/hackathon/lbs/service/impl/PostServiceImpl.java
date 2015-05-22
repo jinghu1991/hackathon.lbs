@@ -51,8 +51,20 @@ public class PostServiceImpl implements IPostService {
     }
 
     @Override
-    public List<PostVO> getPost(Integer groupId) {
-        return postDAO.getByGroup(groupId);
+    public List<PostVO> getPost(Integer groupId, Integer userId) {
+        List<PostVO> result = postDAO.getByGroup(groupId);
+        for(PostVO postVO : result) {
+            VotePO param = new VotePO();
+            param.setPostId(postVO.getId());
+            param.setUserId(userId);
+            VotePO votePO = voteDAO.getVote(param);
+            if(votePO != null) {
+                postVO.setVoted(votePO.getType());
+            } else {
+                postVO.setVoted(0);
+            }
+        }
+        return result;
     }
 
     @Override
@@ -67,7 +79,7 @@ public class PostServiceImpl implements IPostService {
         }
         if(votePO.getType().equals(1)) {
             postPO.setVoteCount(postPO.getVoteCount() + 1);
-        } else if(votePO.getType().equals(0)) {
+        } else if(votePO.getType().equals(-1)) {
             postPO.setVoteCount(postPO.getVoteCount() - 1);
         } else {
             throw new InvalidParameterException("invalid parameter!");

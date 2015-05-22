@@ -6,7 +6,7 @@ import com.sankuai.hackathon.lbs.bean.po.UserActivityPO;
 import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.bean.vo.ActivityVO;
 import com.sankuai.hackathon.lbs.dao.IActivityDAO;
-import com.sankuai.hackathon.lbs.dao.IGroupDao;
+import com.sankuai.hackathon.lbs.dao.IGroupDAO;
 import com.sankuai.hackathon.lbs.dao.IUserActivityDAO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IActivityService;
@@ -35,12 +35,12 @@ public class ActivityServiceImpl implements IActivityService{
     IUserDAO userDAO;
 
     @Resource
-    IGroupDao groupDao;
+    IGroupDAO groupDAO;
 
     @Override
     public void createActivity(ActivityPO activityPO) {
         UserPO userPO = userDAO.getById(activityPO.getUserId());
-        GroupPO groupPO = groupDao.getGroupById(activityPO.getGroupId());
+        GroupPO groupPO = groupDAO.getGroupById(activityPO.getGroupId());
         if(userPO == null || groupPO == null) {
             throw new InvalidParameterException("invalid parameter!");
         }

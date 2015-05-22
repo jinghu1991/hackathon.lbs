@@ -15,13 +15,18 @@
         WHERE id = #{groupId}
     </select>
 
-    <select id="getGroupByRange" resultType="com.sankuai.hackathon.lbs.bean.po.GroupPO">
+    <select id="getGroupPOByCond" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
         SELECT * FROM tb_group
-        <![CDATA[ where latitude<#{maxLat} ]]>
-        <![CDATA[ and latitude>#{minLat} ]]>
-        <![CDATA[ and luntitude<#{maxLun} ]]>
-        <![CDATA[ and luntitude>#{minLun} ]]>
+        <![CDATA[ where latitude<#{neLat} ]]>
+        <![CDATA[ and latitude>#{swLat} ]]>
+        <![CDATA[ and longitude<#{neLng} ]]>
+        <![CDATA[ and longitude>#{swLng} ]]>
     </select>
+
+    <insert id="insertMember" parameterType="com.sankuai.hackathon.lbs.bean.po.GroupUserPO">
+        INSERT INTO user_group (user_id, group_id, create_time)
+        VALUES	( #{userId}, #{groupId}, CURRENT_TIMESTAMP );
+    </insert>
 
 
 </mapper>

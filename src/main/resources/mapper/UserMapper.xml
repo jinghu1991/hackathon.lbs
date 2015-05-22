@@ -51,4 +51,12 @@
         SELECT * FROM user
         WHERE username=#{value}
     </select>
+
+    <select id="getByGroup" resultType="com.sankuai.hackathon.lbs.bean.po.UserPO">
+        SELECT * FROM user
+        INNER JOIN user_group on user.id = user_group.user_id
+        WHERE user_group.group_id = #{groupId}
+    </select>
+
+
 </mapper>

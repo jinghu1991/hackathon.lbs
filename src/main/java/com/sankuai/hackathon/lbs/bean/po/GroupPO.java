@@ -1,6 +1,5 @@
 package com.sankuai.hackathon.lbs.bean.po;
 
-import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 /**
@@ -14,9 +13,9 @@ public class GroupPO {
 
     private String name;
 
-    private BigDecimal longitude;  // 经度
+    private Double longitude;  // 经度
 
-    private BigDecimal latitude; // 纬度
+    private Double latitude; // 纬度
 
     private String photo;
 
@@ -79,24 +78,22 @@ public class GroupPO {
         this.createBy = createBy;
     }
 
-
-
-    public BigDecimal getLatitude() {
+    public Double getLatitude() {
 
         return latitude;
     }
 
-    public void setLatitude(BigDecimal latitude) {
+    public void setLatitude(Double latitude) {
 
         this.latitude = latitude;
     }
 
-    public BigDecimal getLongitude() {
+    public Double getLongitude() {
 
         return longitude;
     }
 
-    public void setLongitude(BigDecimal longitude) {
+    public void setLongitude(Double longitude) {
 
         this.longitude = longitude;
     }

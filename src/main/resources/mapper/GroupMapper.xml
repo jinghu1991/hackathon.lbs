@@ -9,7 +9,8 @@
     </select>
 
     <select id="getGroupPOByRange" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
-        SELECT * FROM tb_group
+        SELECT tb_group.*, count(post.id) as postCount FROM tb_group
+        LEFT JOIN post on tb_group.id = post.group_id
         <![CDATA[ where latitude<#{neLat} ]]>
         <![CDATA[ and latitude>#{swLat} ]]>
         <![CDATA[ and longitude<#{neLng} ]]>
@@ -17,9 +18,10 @@
     </select>
 
     <select id="getGroupByUserId" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
-        SELECT tb_group.* FROM tb_group, user_group
-        WHERE user_group.group_id = tb_group.id
-        and user_group.user_id = #{userId}
+        SELECT tb_group.*,count(post.id) as postCount FROM tb_group
+        inner join user_group on user_group.group_id = tb_group.id
+        LEFT JOIN post on tb_group.id = post.group_id
+        where user_group.user_id = #{userId}
     </select>
 
     <insert id="insertMember" parameterType="com.sankuai.hackathon.lbs.bean.po.GroupUserPO">

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IUserActivityDAO">
+    <insert id="insert">
+        INSERT INTO user_activity(id,user_id,activity_id)
+        VALUES(#{id},#{userId},#{activityId})
+    </insert>
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO user_activity(id,user_id,activity_id)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.userId},#{item.activityId})
+        </foreach>
+        ON DUPLICATE KEY UPDATE user_id=VALUES(user_id),activity_id=VALUES(activity_id)
+    </insert>
+    <update id="update">
+        UPDATE user_activity
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="userId != null">
+                user_id=#{userId},
+            </if>
+            <if test="activityId != null">
+                activity_id=#{activityId}
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.po.UserActivityPO">
+        SELECT * FROM user_activity
+        WHERE id=#{value}
+    </select>
+</mapper>

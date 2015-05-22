@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IActivityDAO">
+    <insert id="insert">
+        INSERT INTO activity(id,group_id,user_id,description,current_count,max_count,start_time,end_time,create_time)
+        VALUES(#{id},#{groupId},#{userId},#{description},#{currentCount},#{maxCount},#{startTime},#{endTime},#{createTime})
+    </insert>
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO activity(id,group_id,user_id,description,current_count,max_count,start_time,end_time,create_time)
+        VALUES
+        <foreach collection="list" item="item" index="index" separator=",">
+            (#{item.id},#{item.groupId},#{item.userId},#{item.description},#{item.currentCount},#{item.maxCount},#{item.startTime},#{item.endTime},#{item.createTime})
+        </foreach>
+        ON DUPLICATE KEY UPDATE group_id=VALUES(group_id),user_id=VALUES(user_id),description=VALUES(description),current_count=VALUES(current_count),max_count=VALUES(max_count),start_time=VALUES(start_time),end_time=VALUES(end_time),create_time=VALUES(create_time)
+    </insert>
+    <update id="update">
+        UPDATE activity
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="groupId != null">
+                group_id=#{groupId},
+            </if>
+            <if test="userId != null">
+                user_id=#{userId},
+            </if>
+            <if test="description != null">
+                description=#{description},
+            </if>
+            <if test="currentCount != null">
+                current_count=#{currentCount},
+            </if>
+            <if test="maxCount != null">
+                max_count=#{maxCount},
+            </if>
+            <if test="startTime != null">
+                start_time=#{startTime},
+            </if>
+            <if test="endTime != null">
+                end_time=#{endTime},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime}
+            </if>
+        </trim>
+        WHERE id=#{id}
+    </update>
+    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.po.ActivityPO">
+        SELECT * FROM activity
+        WHERE id=#{value}
+    </select>
+    <resultMap id="user" type="com.sankuai.hackathon.lbs.bean.po.UserPO"></resultMap>
+    <resultMap id="activityVO" type="com.sankuai.hackathon.lbs.bean.vo.ActivityVO">
+        <id column="id" property="id"/>
+        <result column="description" property="content"/>
+        <association property="user" resultMap="user"/>
+        <collection property="attends" ofType="com.sankuai.hackathon.lbs.bean.po.UserPO" resultMap="user"/>
+    </resultMap>
+    <select id="getByGroup" resultMap="activityVO">
+        SELECT *
+        FROM activity
+        INNER JOIN tb_group on tb_group.id=activity.group_id
+        LEFT JOIN user_activity on user_activity.activity_id=activity.id
+        LEFT JOIN user on user.id=user_activity.user_id
+        WHERE tb_group.id=${value}
+    </select>
+</mapper>

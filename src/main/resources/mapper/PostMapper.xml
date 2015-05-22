@@ -41,8 +41,21 @@
         SELECT * FROM post
         WHERE id=#{value}
     </select>
-    <select id="getByGroup" resultType="com.sankuai.hackathon.lbs.bean.po.PostPO">
-        SELECT * FROM post
-        WHERE group_id=${value}
+
+    <resultMap id="user" type="com.sankuai.hackathon.lbs.bean.po.UserPO">
+    </resultMap>
+    <resultMap id="group" type="com.sankuai.hackathon.lbs.bean.po.GroupPO">
+    </resultMap>
+    <resultMap id="postVO" type="com.sankuai.hackathon.lbs.bean.vo.PostVO">
+        <id column="id" property="id"/>
+        <association property="user" resultMap="user"/>
+        <association property="group" resultMap="group"/>
+    </resultMap>
+    <select id="getByGroup" resultMap="postVO">
+        SELECT *
+        FROM post
+        INNER JOIN user on post.user_id = user.id
+        INNER JOIN tb_group on post.group_id = tb_group.id
+        WHERE post.group_id=${value}
     </select>
 </mapper>

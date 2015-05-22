@@ -3,6 +3,7 @@ package com.sankuai.hackathon.lbs.web;
 import com.sankuai.hackathon.lbs.bean.AjaxResult;
 import com.sankuai.hackathon.lbs.bean.po.PostPO;
 import com.sankuai.hackathon.lbs.bean.po.VotePO;
+import com.sankuai.hackathon.lbs.bean.vo.PostVO;
 import com.sankuai.hackathon.lbs.service.IPostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -43,10 +44,10 @@ public class PostController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody AjaxResult getGroupPost(Integer groupId) {
+    public @ResponseBody AjaxResult getGroupPost(Integer groupid) {
         AjaxResult result = new AjaxResult();
         try {
-            List<PostPO> postPOList = postService.getPost(groupId);
+            List<PostVO> postPOList = postService.getPost(groupid);
             result.setStatus(0);
             result.setData(postPOList);
         } catch (Exception ex) {

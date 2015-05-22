@@ -4,6 +4,7 @@ import com.sankuai.hackathon.lbs.bean.po.GroupPO;
 import com.sankuai.hackathon.lbs.bean.po.PostPO;
 import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.bean.po.VotePO;
+import com.sankuai.hackathon.lbs.bean.vo.PostVO;
 import com.sankuai.hackathon.lbs.dao.IGroupDao;
 import com.sankuai.hackathon.lbs.dao.IPostDAO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
@@ -50,7 +51,7 @@ public class PostServiceImpl implements IPostService {
     }
 
     @Override
-    public List<PostPO> getPost(Integer groupId) {
+    public List<PostVO> getPost(Integer groupId) {
         return postDAO.getByGroup(groupId);
     }
 

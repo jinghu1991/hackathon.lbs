@@ -24,6 +24,27 @@
         </mvc:interceptor>
     </mvc:interceptors>
 
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath">
+            <value>/WEB-INF/views/</value>
+        </property>
+
+    </bean>
+
+    <!-- 配置freeMarker视图解析器 -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+        <property name="contentType" value="text/html; charset=utf-8"/>
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="order" value="1"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="requestContextAttribute" value="request"/>
+    </bean>
+
     <bean id="exceptionHandler" class="com.sankuai.hackathon.lbs.framework.spring.SpringExceptionHandler"/>
 
 </beans>

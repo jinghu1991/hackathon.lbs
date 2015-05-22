@@ -13,9 +13,9 @@ public class GroupPO {
 
     private String name;
 
-    private BigDecimal lng;
+    private BigDecimal longitude;  // 经度
 
-    private BigDecimal lat;
+    private BigDecimal latitude; // 纬度
 
     private String photo;
 
@@ -35,25 +35,6 @@ public class GroupPO {
         this.id = id;
     }
 
-    public BigDecimal getLat() {
-
-        return lat;
-    }
-
-    public void setLat(BigDecimal lat) {
-
-        this.lat = lat;
-    }
-
-    public BigDecimal getLng() {
-
-        return lng;
-    }
-
-    public void setLng(BigDecimal lng) {
-
-        this.lng = lng;
-    }
 
     public String getName() {
 
@@ -73,5 +54,55 @@ public class GroupPO {
     public void setPhoto(String photo) {
 
         this.photo = photo;
+    }
+
+    public Integer getCanJoin() {
+
+        return canJoin;
+    }
+
+    public void setCanJoin(Integer canJoin) {
+
+        this.canJoin = canJoin;
+    }
+
+    public String getCreateBy() {
+
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+
+        this.createBy = createBy;
+    }
+
+    public String getCreateTime() {
+
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+
+        this.createTime = createTime;
+    }
+
+    public BigDecimal getLatitude() {
+
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+
+        this.latitude = latitude;
+    }
+
+    public BigDecimal getLongitude() {
+
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+
+        this.longitude = longitude;
     }
 }

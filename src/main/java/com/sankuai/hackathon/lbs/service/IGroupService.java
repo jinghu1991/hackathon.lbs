@@ -19,4 +19,10 @@ public interface IGroupService {
 
     public void leaveGroup(Integer groupId, Integer userId);
 
+    // group_user
+    // id
+    // group_id
+    // user_id
+    // join time
+
 }

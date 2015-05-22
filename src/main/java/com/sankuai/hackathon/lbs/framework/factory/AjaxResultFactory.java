@@ -16,4 +16,11 @@ public class AjaxResultFactory {
         result.setMsg("success");
         return result;
     }
+
+    public static AjaxResult getFailureResult(){
+        AjaxResult result = new AjaxResult();
+        result.setStatus(-1);
+        result.setMsg("failure");
+        return result;
+    }
 }

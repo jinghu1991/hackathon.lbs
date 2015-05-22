@@ -3,24 +3,23 @@
 <mapper namespace="com.sankuai.hackathon.lbs.dao.IGroupDao">
 
 
-    <select id="getGroupByUserId" resultType="com.sankuai.hackathon.lbs.bean.po.GroupPO">
-        SELECT * FROM tb_group
-        INNER JOIN group_user
-        on tb_group.group_id = tb_group.id
-        WHERE group_user.user_id = #{userId}
-    </select>
-
     <select id="getGroupById"  resultType="com.sankuai.hackathon.lbs.bean.po.GroupPO">
         SELECT * FROM tb_group
         WHERE id = #{groupId}
     </select>
 
-    <select id="getGroupPOByCond" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
+    <select id="getGroupPOByRange" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
         SELECT * FROM tb_group
         <![CDATA[ where latitude<#{neLat} ]]>
         <![CDATA[ and latitude>#{swLat} ]]>
         <![CDATA[ and longitude<#{neLng} ]]>
         <![CDATA[ and longitude>#{swLng} ]]>
+    </select>
+
+    <select id="getGroupByUserId" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
+        SELECT tb_group.* FROM tb_group, user_group
+        WHERE user_group.group_id = tb_group.id
+        and user_group.user_id = #{userId}
     </select>
 
     <insert id="insertMember" parameterType="com.sankuai.hackathon.lbs.bean.po.GroupUserPO">

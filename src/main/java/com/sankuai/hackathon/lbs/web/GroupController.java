@@ -26,12 +26,16 @@ public class GroupController {
     private IGroupService groupService;
 
 
-    public AjaxResult getGroupById(Integer  groupId){
+    @RequestMapping("/groupByUserId")
+    @ResponseBody
+    public AjaxResult getByUserId(Integer  userid){
 
+        List<GroupVO> list = this.groupService.getGroupPOByUserId(userid);
 
+        AjaxResult result = AjaxResultFactory.getSuccessResult();
+        result.setData(list);
 
-
-        return null;
+        return result;
     }
 
 
@@ -54,6 +58,7 @@ public class GroupController {
 
         AjaxResult result = AjaxResultFactory.getSuccessResult();
         result.setData(poList);
+
 
         return result;
     }

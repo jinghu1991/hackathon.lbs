@@ -31,6 +31,10 @@ public class GroupController {
     @ResponseBody
     public AjaxResult getByUserId(Integer userid) {
 
+        if(userid == null){
+            return AjaxResultFactory.getFailureResult();
+        }
+
         List<GroupVO> list = this.groupService.getGroupPOByUserId(userid);
 
         AjaxResult result = AjaxResultFactory.getSuccessResult();

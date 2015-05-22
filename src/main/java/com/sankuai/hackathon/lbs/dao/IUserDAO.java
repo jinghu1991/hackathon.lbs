@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.dao;
 
-import com.sankuai.hackathon.lbs.bean.pobeans.UserPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import org.springframework.stereotype.Repository;
 
 /**

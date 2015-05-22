@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.service.impl;
 
-import com.sankuai.hackathon.lbs.bean.pobeans.UserPO;
+import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IUserService;
 import com.sankuai.hackathon.lbs.util.DateTime;

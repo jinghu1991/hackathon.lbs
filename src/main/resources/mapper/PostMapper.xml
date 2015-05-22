@@ -37,11 +37,11 @@
         </trim>
         WHERE id=#{id}
     </update>
-    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.pobeans.PostPO">
+    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.po.PostPO">
         SELECT * FROM post
         WHERE id=#{value}
     </select>
-    <select id="getByGroup" resultType="com.sankuai.hackathon.lbs.bean.pobeans.PostPO">
+    <select id="getByGroup" resultType="com.sankuai.hackathon.lbs.bean.po.PostPO">
         SELECT * FROM post
         WHERE group_id=${value}
     </select>

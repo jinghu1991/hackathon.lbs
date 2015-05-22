@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.service;
 
-import com.sankuai.hackathon.lbs.bean.pobeans.GroupPO;
+import com.sankuai.hackathon.lbs.bean.po.GroupPO;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.sankuai.hackathon.lbs.bean.po;
+package com.sankuai.hackathon.lbs.bean.pobeans;
 
 import java.sql.Timestamp;
 

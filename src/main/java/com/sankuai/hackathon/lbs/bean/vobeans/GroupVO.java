@@ -1,6 +1,6 @@
-package com.sankuai.hackathon.lbs.bean.vo;
+package com.sankuai.hackathon.lbs.bean.vobeans;
 
-import com.sankuai.hackathon.lbs.bean.po.GroupPO;
+import com.sankuai.hackathon.lbs.bean.pobeans.GroupPO;
 
 /**
  * Description: GroupVO

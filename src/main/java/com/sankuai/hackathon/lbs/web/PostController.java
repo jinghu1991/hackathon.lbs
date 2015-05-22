@@ -1,7 +1,7 @@
 package com.sankuai.hackathon.lbs.web;
 
 import com.sankuai.hackathon.lbs.bean.AjaxResult;
-import com.sankuai.hackathon.lbs.bean.po.PostPO;
+import com.sankuai.hackathon.lbs.bean.pobeans.PostPO;
 import com.sankuai.hackathon.lbs.service.IPostService;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;

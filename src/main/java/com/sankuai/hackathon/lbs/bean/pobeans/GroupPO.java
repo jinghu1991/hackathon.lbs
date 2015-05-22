@@ -1,6 +1,7 @@
-package com.sankuai.hackathon.lbs.bean.po;
+package com.sankuai.hackathon.lbs.bean.pobeans;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 /**
  * Description: GroupPO
@@ -21,7 +22,9 @@ public class GroupPO {
 
     private String createBy;
 
-    private String createTime;
+    private Timestamp createTime;
+
+    private Timestamp updateTime;
 
     private Integer canJoin;
 
@@ -76,15 +79,7 @@ public class GroupPO {
         this.createBy = createBy;
     }
 
-    public String getCreateTime() {
 
-        return createTime;
-    }
-
-    public void setCreateTime(String createTime) {
-
-        this.createTime = createTime;
-    }
 
     public BigDecimal getLatitude() {
 
@@ -104,5 +99,25 @@ public class GroupPO {
     public void setLongitude(BigDecimal longitude) {
 
         this.longitude = longitude;
+    }
+
+    public Timestamp getCreateTime() {
+
+        return createTime;
+    }
+
+    public void setCreateTime(Timestamp createTime) {
+
+        this.createTime = createTime;
+    }
+
+    public Timestamp getUpdateTime() {
+
+        return updateTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+
+        this.updateTime = updateTime;
     }
 }

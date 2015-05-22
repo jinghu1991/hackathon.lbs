@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sankuai.hackathon.lbs.dao.IUserDAO">
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.sankuai.hackathon.lbs.bean.po.UserPO">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.sankuai.hackathon.lbs.bean.pobeans.UserPO">
         INSERT INTO user(id,username,avatar,nickname,password,email,online,create_time,recent_login_time)
         VALUES(#{id},#{username},#{avatar},#{nickname},#{password},#{email},#{online},#{createTime},#{recentLoginTime})
     </insert>
@@ -43,11 +43,11 @@
         </trim>
         WHERE id=#{id}
     </update>
-    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.po.UserPO">
+    <select id="getById" resultType="com.sankuai.hackathon.lbs.bean.pobeans.UserPO">
         SELECT * FROM user
         WHERE id=#{value}
     </select>
-    <select id="getByName" resultType="com.sankuai.hackathon.lbs.bean.po.UserPO">
+    <select id="getByName" resultType="com.sankuai.hackathon.lbs.bean.pobeans.UserPO">
         SELECT * FROM user
         WHERE username=#{value}
     </select>

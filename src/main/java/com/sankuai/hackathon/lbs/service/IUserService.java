@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.service;
 
-import com.sankuai.hackathon.lbs.bean.po.UserPO;
+import com.sankuai.hackathon.lbs.bean.pobeans.UserPO;
 
 /**
  * Description: IUserService

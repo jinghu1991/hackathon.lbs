@@ -1,6 +1,6 @@
 package com.sankuai.hackathon.lbs.dao;
 
-import com.sankuai.hackathon.lbs.bean.vo.GroupVO;
+import com.sankuai.hackathon.lbs.bean.vobeans.GroupVO;
 
 import java.util.List;
 

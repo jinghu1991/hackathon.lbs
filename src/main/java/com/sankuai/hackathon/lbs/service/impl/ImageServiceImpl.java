@@ -22,7 +22,7 @@ import java.util.UUID;
 @Service
 public class ImageServiceImpl implements IImageService {
 
-    public static final String FILE_PATH = "/Users/qiqi/nginx/image/";
+    public static final String FILE_PATH = "/tmp/";
 
     private static final String ACCESS_KEY = "Faajz0-yWI4QdrILtBynJ7JGLNl96y5v1j3K7L8I";
     private static final String SECRET_KEY = "9MqReDxyQgxIyG9khnNal7yuYZJbZzmFJkeXEdqu";

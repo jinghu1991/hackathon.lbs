@@ -49,4 +49,16 @@ public class UserController {
         }
         return result;
     }
+
+    @RequestMapping(value = "/check", method = RequestMethod.GET)
+    public @ResponseBody AjaxResult checkUser(String username) {
+        AjaxResult result = new AjaxResult();
+        try {
+            result.setStatus(userService.checkExist(username));
+        } catch (Exception ex) {
+            result.setStatus(-1);
+            result.setMsg(ex.getMessage());
+        }
+        return result;
+    }
 }

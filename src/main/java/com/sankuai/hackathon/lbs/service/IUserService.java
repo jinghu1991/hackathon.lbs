@@ -12,4 +12,6 @@ public interface IUserService {
     UserPO getUser(UserPO userPO);
 
     void saveUser(UserPO userPO);
+
+    Integer checkExist(String userName);
 }

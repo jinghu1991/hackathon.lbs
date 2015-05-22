@@ -1,5 +1,7 @@
 package com.sankuai.hackathon.lbs.bean.po;
 
+import com.sankuai.hackathon.lbs.constant.UserConstant;
+
 import java.sql.Timestamp;
 
 /**
@@ -10,7 +12,7 @@ import java.sql.Timestamp;
 public class UserPO {
     private Integer id;
     private String username;
-    private String avatar;
+    private String avatar = UserConstant.DEFAULT_AVATAR;
     private String nickname;
     private String password;
     private String email;

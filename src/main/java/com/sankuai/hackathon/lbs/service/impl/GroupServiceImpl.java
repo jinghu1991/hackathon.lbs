@@ -41,6 +41,10 @@ public class GroupServiceImpl implements IGroupService{
     @Override
     public GroupVO getGroupVOById(Integer groupId) {
 
+        if(groupId == null){
+            return null;
+        }
+
         List<GroupVO> voList = this.groupDao.getGroupVOById(groupId);
         renderGroupVO(voList);
         if(voList != null && voList.size() > 0){

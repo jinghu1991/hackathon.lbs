@@ -1,7 +1,7 @@
 package com.sankuai.hackathon.lbs.web;
 
 import com.sankuai.hackathon.lbs.bean.AjaxResult;
-import com.sankuai.hackathon.lbs.bean.po.UserPO;
+import com.sankuai.hackathon.lbs.bean.vo.MemberVO;
 import com.sankuai.hackathon.lbs.framework.factory.AjaxResultFactory;
 import com.sankuai.hackathon.lbs.service.IGroupService;
 import org.springframework.stereotype.Controller;
@@ -37,10 +37,11 @@ public class MemberController {
     @ResponseBody
     public AjaxResult get(Integer groupid) {
 
-        List<UserPO> userList = this.groupService.getUserByGroupId(groupid);
+        List<MemberVO> memberVOList = this.groupService.getUserByGroupId(groupid);
+
 
         AjaxResult result = AjaxResultFactory.getSuccessResult();
-        result.setData(userList);
+        result.setData(memberVOList);
 
         return result;
     }

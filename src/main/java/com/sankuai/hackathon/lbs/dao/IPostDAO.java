@@ -21,4 +21,5 @@ public interface IPostDAO {
     PostPO getById(int id);
 
     List<PostVO> getByGroup(int groupId);
+
 }

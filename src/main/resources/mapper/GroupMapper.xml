@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sankuai.hackathon.lbs.dao.IGroupDao">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IGroupDAO">
 
 
     <select id="getGroupById"  resultType="com.sankuai.hackathon.lbs.bean.po.GroupPO">
@@ -8,18 +8,28 @@
         WHERE id = #{groupId}
     </select>
 
+    <select id="getGroupVOById"  resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
+        SELECT tb_group.*, count(post.id) as postCount FROM tb_group
+        LEFT JOIN post on tb_group.id = post.group_id
+        WHERE tb_group.id = #{groupId}
+    </select>
+
     <select id="getGroupPOByRange" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
-        SELECT * FROM tb_group
+        SELECT tb_group.*, count(post.id) as postCount FROM tb_group
+        LEFT JOIN post on tb_group.id = post.group_id
         <![CDATA[ where latitude<#{neLat} ]]>
         <![CDATA[ and latitude>#{swLat} ]]>
         <![CDATA[ and longitude<#{neLng} ]]>
         <![CDATA[ and longitude>#{swLng} ]]>
+        group by tb_group.id
     </select>
 
     <select id="getGroupByUserId" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
-        SELECT tb_group.* FROM tb_group, user_group
-        WHERE user_group.group_id = tb_group.id
-        and user_group.user_id = #{userId}
+        SELECT tb_group.*,count(post.id) as postCount FROM tb_group
+        inner join user_group on user_group.group_id = tb_group.id
+        LEFT JOIN post on tb_group.id = post.group_id
+        where user_group.user_id = #{userId}
+        group by tb_group.id
     </select>
 
     <insert id="insertMember" parameterType="com.sankuai.hackathon.lbs.bean.po.GroupUserPO">

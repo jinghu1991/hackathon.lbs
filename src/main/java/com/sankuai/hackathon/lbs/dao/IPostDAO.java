@@ -1,6 +1,7 @@
 package com.sankuai.hackathon.lbs.dao;
 
 import com.sankuai.hackathon.lbs.bean.po.PostPO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,5 +20,5 @@ public interface IPostDAO {
 
     PostPO getById(int id);
 
-    List<PostPO> getByGroup(Integer groupId);
+    List<PostPO> getByGroup(@Param("groupId") Integer groupId);
 }

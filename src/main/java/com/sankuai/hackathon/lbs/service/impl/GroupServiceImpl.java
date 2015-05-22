@@ -4,7 +4,7 @@ import com.sankuai.hackathon.lbs.bean.po.GroupUserPO;
 import com.sankuai.hackathon.lbs.bean.po.UserPO;
 import com.sankuai.hackathon.lbs.bean.vo.GroupVO;
 import com.sankuai.hackathon.lbs.bean.vo.MemberVO;
-import com.sankuai.hackathon.lbs.dao.IGroupDao;
+import com.sankuai.hackathon.lbs.dao.IGroupDAO;
 import com.sankuai.hackathon.lbs.dao.IUserDAO;
 import com.sankuai.hackathon.lbs.service.IGroupService;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ import java.util.Map;
 public class GroupServiceImpl implements IGroupService{
 
     @Resource
-    private IGroupDao groupDao;
+    private IGroupDAO groupDao;
 
     @Resource
     private IUserDAO userDao;
@@ -36,6 +36,18 @@ public class GroupServiceImpl implements IGroupService{
         renderGroupVO(voList);
 
         return voList;
+    }
+
+    @Override
+    public GroupVO getGroupVOById(Integer groupId) {
+
+        List<GroupVO> voList = this.groupDao.getGroupVOById(groupId);
+        renderGroupVO(voList);
+        if(voList != null && voList.size() > 0){
+            return voList.get(0);
+        }
+
+        return null;
     }
 
     @Override

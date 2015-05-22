@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sankuai.hackathon.lbs.dao.IGroupDao">
+<mapper namespace="com.sankuai.hackathon.lbs.dao.IGroupDAO">
 
 
     <select id="getGroupById"  resultType="com.sankuai.hackathon.lbs.bean.po.GroupPO">
         SELECT * FROM tb_group
         WHERE id = #{groupId}
+    </select>
+
+    <select id="getGroupVOById"  resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">
+        SELECT tb_group.*, count(post.id) as postCount FROM tb_group
+        LEFT JOIN post on tb_group.id = post.group_id
+        WHERE tb_group.id = #{groupId}
     </select>
 
     <select id="getGroupPOByRange" resultType="com.sankuai.hackathon.lbs.bean.vo.GroupVO">

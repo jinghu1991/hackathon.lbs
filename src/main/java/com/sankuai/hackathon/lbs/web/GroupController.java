@@ -6,6 +6,7 @@ import com.sankuai.hackathon.lbs.framework.factory.AjaxResultFactory;
 import com.sankuai.hackathon.lbs.service.IGroupService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -28,12 +29,29 @@ public class GroupController {
 
     @RequestMapping("/groupByUserId")
     @ResponseBody
-    public AjaxResult getByUserId(Integer  userid){
+    public AjaxResult getByUserId(Integer userid) {
 
         List<GroupVO> list = this.groupService.getGroupPOByUserId(userid);
 
         AjaxResult result = AjaxResultFactory.getSuccessResult();
         result.setData(list);
+
+        return result;
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    @ResponseBody
+    public AjaxResult getGroupById(Integer groupid) {
+
+        GroupVO groupVO = this.groupService.getGroupVOById(groupid);
+
+        AjaxResult result = null;
+        if (groupVO == null) {
+            result = AjaxResultFactory.getFailureResult();
+        } else {
+            result = AjaxResultFactory.getSuccessResult();
+            result.setData(groupVO);
+        }
 
         return result;
     }
@@ -45,7 +63,7 @@ public class GroupController {
     // _neLat=135.05
     @RequestMapping("/groupByBounds")
     @ResponseBody
-    public AjaxResult groupByBounds(Double _swLng,  Double _neLng, Double _swLat, Double _neLat){
+    public AjaxResult groupByBounds(Double _swLng, Double _neLng, Double _swLat, Double _neLat) {
 
         Map<String, Object> cond = new HashMap<String, Object>();
 
@@ -62,7 +80,6 @@ public class GroupController {
 
         return result;
     }
-
 
 
 }

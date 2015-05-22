@@ -15,6 +15,8 @@ public interface IGroupService {
 
     public List<GroupVO> getGroupPOByCond(Map<String, Object> cond);
 
+    public GroupVO getGroupVOById(Integer groupId);
+
     public List<GroupVO> getGroupPOByUserId(Integer userId);
 
     public void joinGroup(Integer groupId, Integer userId);
